@@ -155,7 +155,10 @@ public class ControlFlowExercises {
             System.out.println("Please enter a numerical grade from 0 to 100: ");
             int numGrade = Integer.parseInt(scanner.nextLine());
 
-            if (numGrade >= 88) {
+            if (numGrade > 100) {
+                System.out.printf("You entered %d which is not allowed!\n", numGrade);
+                System.out.println("Remember to enter a number between 0 and 100.");
+            } else if (numGrade >= 88) {
                 System.out.printf("You entered %d which equates to a grade of A!\n", numGrade);
             } else if (numGrade >= 80) {
                 System.out.printf("You entered %d which equates to a grade of B!\n", numGrade);
