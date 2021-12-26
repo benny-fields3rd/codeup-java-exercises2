@@ -24,8 +24,7 @@ public class ConsoleExercises {
 
 // 2. Prompt a user to enter 3 words, and store each of them in a separate variable. Then, display them back in the
 // console, each on a newline.
-//        System.out.println("Enter your first word: ");
-//        String userString1 = scanner.next();
+//        System.out.println("Enter your first word: ");//       String userString1 = scanner.next();
 //
 //       System.out.println("Enter your second word: ");
 //       String userString2 = scanner.next();
