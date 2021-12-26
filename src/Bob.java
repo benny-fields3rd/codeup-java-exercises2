@@ -34,4 +34,4 @@ public class Bob {
         } while (more.equalsIgnoreCase("yes")); // allows for both uppercase or lowercase input
         System.out.println("Have a great day! Bob is done talking.");
     }
-}
+} // testing
