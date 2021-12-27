@@ -114,14 +114,14 @@ public class MethodsExercises {
         boolean doContinue;
         String userDecision;
         do {
-            System.out.println("Please enter a number between 1 and 10: ");
+            String message = "Let's find Factorials! ";
+            System.out.println(message + "\nPlease enter a number between 1 and 10: ");
             int userInt = getInteger(1, 10);
             System.out.println(factorialCalculate(userInt));
             do {
                 System.out.println("Would you like to continue? [y/n] ");
                 userDecision = scanner.next().trim()
 ;            } while (!userDecision.equalsIgnoreCase("y") & !userDecision.equalsIgnoreCase("n"));
-
             doContinue = userDecision.equalsIgnoreCase("y");
         } while (doContinue);
     }
