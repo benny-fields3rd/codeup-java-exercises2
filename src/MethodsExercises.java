@@ -124,7 +124,6 @@ public class MethodsExercises {
 
             doContinue = userDecision.equalsIgnoreCase("y");
         } while (doContinue);
-
     }
 
 // Bonus
