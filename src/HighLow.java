@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class HighLow {
 // 5. Game Development 101
@@ -18,78 +19,59 @@ public class HighLow {
 //      - Set an upper limit on the number of guesses.
 
     public static int numberOfGuesses;
-    public static int gameNumber;
+    public static void main(String[] args) throws Exception{
+        // calling getRandomIntegerBetweenRange inside guessNumber method
+        guessNumber(getRandomIntegerBetweenRange(1, 100));
+    } // end of main method
 
-    public static void main(String[] args) {
-        initGame();
-    }
+    // random number generator
+    public static int getRandomIntegerBetweenRange(int min, int max)throws Exception {
+        int randomInt = (int)(Math.random()*((max-min)+1))+min;
+        System.out.println("Let's play \"Guess the Number\" game!");
+        printWithDelays("Generating a random number...\n", TimeUnit.MILLISECONDS, 100);
+        System.out.println("Number has been created.");
+        return randomInt;
+    } // end of getRandomIntegerBetweenRange method
 
-    public static void initGame() {
-        boolean programRunning;
-        boolean gameRunning = true;
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to the High / Low Guessing Game!");
+    // Ask user to guess the number and validate input against random number
+    public static int guessNumber(int randomInt)throws Exception {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Guess the number:"); // ask user for number input
+        int guessedInput = sc.nextInt();
 
-        do {
-            gameNumber = randomWithRange(1, 100);
-            System.out.println("The random number is: " + gameNumber);
-            do {
-                gameRunning = runRound(scanner);
-            } while (gameRunning);
-            programRunning = getYesOrNo(scanner).equals("y");
-        } while (programRunning);
-        System.out.println("Good bye!");
-    }
-
-    public static boolean runRound(Scanner scanner) {
-        boolean gameNotWon = false;
-        System.out.print("Please enter a guess: ");
-        int playerGuess = getInteger(1, 100, scanner);
-
-        if (playerGuess == gameNumber) {
-            System.out.println("GOOD GUESS!");
-            gameNotWon = false;
-        } else if (playerGuess > gameNumber) {
-            System.out.println("LOWER");
+        if (guessedInput < randomInt) { // logic based on input to tell user to go higher
+            System.out.println("higher..");
             numberOfGuesses++;
-            gameNotWon = true;
             System.out.println("Number of guesses made: " + numberOfGuesses);
-        } else {
-            System.out.println("HIGHER");
-            gameNotWon = true;
+            return guessNumber(randomInt);
+
+        } else if (guessedInput > randomInt) { // logic based on input to tell user to go lower
+            System.out.println("Lower...");
+            numberOfGuesses++;
+            System.out.println("Number of guesses made: " + numberOfGuesses);
+            return guessNumber(randomInt);
+        } else if (guessedInput == randomInt){ // if user guesses correctly, inform user
+            System.out.printf("Congratulations! \nYou guessed the number!  \nThe number is %d!%n", randomInt);
             numberOfGuesses++;
             System.out.println("Number of guesses made: " + numberOfGuesses);
         }
-        return gameNotWon;
-    }
-
-    public static int randomWithRange(int min, int max)
-    {
-        int range = (max - min) + 1;
-        return (int)(Math.random() * range) + min;
-    }
-
-    public static int getInteger(int min, int max, Scanner scanner) {
-        if (!scanner.hasNextInt()) {
-            System.out.println("Not a number!");
-            return getInteger(min, max, scanner);
-        }
-        int userInput = scanner.nextInt();
-        if (userInput >= min && userInput <= max) {
-            return userInput;
+        System.out.println("Do you want to play again?"); // ask user to play again
+        String answer = sc.next();
+        if (answer.equalsIgnoreCase("yes") || answer.equalsIgnoreCase("y")) {
+            guessNumber(getRandomIntegerBetweenRange(1, 100));
         } else {
-            System.out.println("Number not in range!");
-            return getInteger(min, max, scanner);
+            System.out.println("No worries. Play again soon!");
         }
-    }
+        return 0;
+    } // end of guessNumber method
 
-    public static String getYesOrNo(Scanner scanner) {
-        String userChoice;
-
-        do {
-            System.out.println("Do you wish to play again? [y/n]: ");
-            userChoice = scanner.next().trim();
-        } while (!userChoice.equalsIgnoreCase("y") && !userChoice.equalsIgnoreCase("n"));
-        return userChoice;
-    }
+    // delay print function
+    // https://stackoverflow.com/questions/19882885/making-text-appear-delayed
+    public static void printWithDelays(String data, TimeUnit unit, long delay)
+            throws InterruptedException {
+        for (char ch:data.toCharArray()) {
+            System.out.print(ch);
+            unit.sleep(delay);
+        }
+    } // end of printWithDelays method
 }
