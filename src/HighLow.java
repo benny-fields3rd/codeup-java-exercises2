@@ -63,7 +63,7 @@ public class HighLow {
             System.out.println("No worries. Play again soon!");
         }
         return 0;
-    } // end of guessNumber method
+    } // end of guessNumber method.
 
     // delay print function
     // https://stackoverflow.com/questions/19882885/making-text-appear-delayed
