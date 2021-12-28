@@ -51,7 +51,7 @@ public class HighLow {
             System.out.println("Number of guesses made: " + numberOfGuesses);
             return guessNumber(randomInt);
         } else if (guessedInput == randomInt){ // if user guesses correctly, inform user
-            System.out.printf("Good Guess! \nYou guessed the number!  \nThe number is %d!%n", randomInt);
+            System.out.printf("Good Guess! \nYou guessed the correct number!  \nThe number is %d!%n", randomInt);
             numberOfGuesses++;
             System.out.println("Number of guesses made: " + numberOfGuesses);
         }
