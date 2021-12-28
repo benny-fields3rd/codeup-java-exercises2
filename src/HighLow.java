@@ -29,14 +29,14 @@ public class HighLow {
         int randomInt = (int)(Math.random()*((max-min)+1))+min;
         System.out.println("Let's play \"Guess the Number\" game!");
         printWithDelays("Generating a random number...\n", TimeUnit.MILLISECONDS, 100);
-        System.out.println("Number has been created.");
+        System.out.println("A random number has been generated. \nNow you have to guess the number.");
         return randomInt;
     } // end of getRandomIntegerBetweenRange method
 
     // Ask user to guess the number and validate input against random number
     public static int guessNumber(int randomInt)throws Exception {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Guess the number:"); // ask user for number input
+        System.out.println("Enter your guess:"); // ask user for number input
         int guessedInput = sc.nextInt();
 
         if (guessedInput < randomInt) { // logic based on input to tell user to go higher
