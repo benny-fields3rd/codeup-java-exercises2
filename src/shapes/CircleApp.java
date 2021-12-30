@@ -28,7 +28,7 @@ public class CircleApp {
 
         Circle circle = new Circle(input.getDouble());
         System.out.println("The circumference of a circle is: " + circle.getCircumference());
-        System.out.println("The are of the circle is: " + circle.getArea());
+        System.out.println("The area of the circle is: " + circle.getArea());
 
     }
 
