@@ -14,6 +14,19 @@ public class Circle {
         - public double getArea()
         - public double getCircumference()
 */
+    private double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    public double getArea() {
+        return Math.PI * Math.pow(this.radius, 2);
+    }
+
+    public double getCircumference() {
+        return Math.PI * 2 * this.radius;
+    }
 
 // Inside of shapes, create a class named CircleApp that prompts the user for the radius of the circle using your
 // Input class, creates a Circle object, and displays the circumference and area. (Note that you will need to
