@@ -30,9 +30,6 @@ public class CircleApp {
         System.out.println("The circumference of a circle is " + circle.getCircumference());
         System.out.println(" The are of the circle is " + circle.getArea());
 
-
-
-
     }
 
 
